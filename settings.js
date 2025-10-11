@@ -5,7 +5,7 @@ import { time } from "console"
 export default {
   prefix: "?",
   botname: "Live Moderation",
-  PrivateToken: "MTQyNDg1ODIyNTYwNTQ4MDU4OQ.G__Pwj.TsMIlzR4UUrKS8fw0w-h2oD5ONWgfMPrJ_nrlc",
+  PrivateToken: "",
   
   Directories: {
     Class: './Classes',
