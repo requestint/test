@@ -5,7 +5,7 @@ import { time } from "console"
 export default {
   prefix: "?",
   botname: "Live Moderation",
-  PrivateToken: "",
+  PrivateToken: process.env.Secret,
   
   Directories: {
     Class: './Classes',
