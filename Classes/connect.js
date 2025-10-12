@@ -56,7 +56,8 @@ export class Connect {
       "Command": args[1],
       "Server": args[2],
       "Username": args[3],
-      "Length": args[4]
+      "Length": args[4],
+      "PlaceId": args[5]
     }
 
     /// Sending nofication
@@ -68,6 +69,6 @@ export class Connect {
       so we can then now remotely access a server session, but if we're not we'll connect
       to a new session
     */
-    return request(args[1], args[3], args[4])
+    return request(args[1], args[3], args[4], args[5])
   }
 }
