@@ -1,5 +1,5 @@
 // libraries
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client, GatewayIntentBits, Role, User } from "discord.js";
 import { assert, log, table } from "node:console";
 import { request } from "node:http";
 import { time } from "node:console";
@@ -69,15 +69,26 @@ client.once("ready", () => {
 
 // * Message Listener
 client.on("messageCreate", (message) => {
+    // Varibles
+    const commandName = message.content.slice(1).split(' ')[0].toLowerCase();
+    const member = message.member;
+    const targetRoleName = '.';
+    
     if (message.author.bot) return;
+
+    // Use `.some()` to check if any of the roles match the name
+    if (!member.roles.cache.some(role => role.name === targetRoleName)) {
+      return;
+    }
+
     if (!message.content.includes(settings.prefix)) {
       message.channel.send('Seeking command!')
       return;
     } 
 
+    message.reply(`Hello, ${targetRoleName}!`);
+
     
-    const commandName = message.content.slice(1).split(' ')[0].toLowerCase();
-    console.log(commandName)
     try {
         message.reply("[LIVE MODERATION] " + message.content + " recieved! ")
 
