@@ -3,11 +3,11 @@ import { Client, GatewayIntentBits } from "discord.js";
 import { assert, log, table } from "node:console";
 import { request } from "node:http";
 import { time } from "node:console";
+
 // Json Files
 import self from './settings.js'
 import { Save } from "./Classes/save.js";
 import settings from "./settings.js";
-// console.log(settings);
 
 
 
