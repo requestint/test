@@ -8,7 +8,7 @@ let IsConnectedToServer = false
 
 
 // Functions
-async function request(type, username, length) {
+async function request(type, username, length, PlaceId) {
   console.log('Sending data:', {
     type: type,
     username: username,
@@ -24,7 +24,8 @@ async function request(type, username, length) {
     body: JSON.stringify({
       type: type,
       username: username,
-      length: length
+      length: length,
+      PlaceId: PlaceId
     })
 
   });
