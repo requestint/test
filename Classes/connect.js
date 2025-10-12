@@ -12,7 +12,8 @@ async function request(type, username, length, PlaceId) {
   console.log('Sending data:', {
     type: type,
     username: username,
-    length: length
+    length: length,
+    PlaceId: PlaceId
   });
 
   // http://localhost:3000/send-command < TO RUN LOCALLY FOR DEBUGGING PURPOSES BUT CAN'T REACH ROLBOX SESSIONS
