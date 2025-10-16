@@ -9,12 +9,7 @@ let IsConnectedToServer = false
 
 // Functions
 async function request(param) {
-  console.log('Sending data:', {
-    type: type,
-    username: username,
-    length: length,
-    PlaceId: PlaceId
-  });
+  console.log('Sending data:', param);
 
   // http://localhost:3000/send-command < TO RUN LOCALLY FOR DEBUGGING PURPOSES BUT CAN'T REACH ROLBOX SESSIONS
   //'https://middleware.up.railway.app/send-command' < TO RUN PUBLICALLY & CAN RUN ROBLOX SESSIONS
@@ -34,13 +29,14 @@ async function request(param) {
 }
 
 export class Connect {
-  constructor(...priameters) {
-    this.response = {...priameters};
+  constructor(priameters) {
+    console.log(priameters)
+    this.response = priameters;
   }
 
   start() {
     /// Sending nofication
-    this.message.reply('Connection is being established, arugments have been provided : ' + JSON.stringify(this.response))
+    // this.message.reply('Connection is being established, arugments have been provided : ' + this.response)
 
     // Connecting to server on roblox
     /*
