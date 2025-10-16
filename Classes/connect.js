@@ -8,7 +8,7 @@ let IsConnectedToServer = false
 
 
 // Functions
-async function request(type, username, length, PlaceId) {
+async function request(param) {
   console.log('Sending data:', {
     type: type,
     username: username,
@@ -22,12 +22,7 @@ async function request(type, username, length, PlaceId) {
   const res = await fetch(settings.PublicDir, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      type: type,
-      username: username,
-      length: length,
-      PlaceId: PlaceId
-    })
+    body: JSON.stringify(param)
 
   });
 
@@ -39,30 +34,13 @@ async function request(type, username, length, PlaceId) {
 }
 
 export class Connect {
-  constructor(message) {
-    this.message = message;
+  constructor(...priameters) {
+    this.response = {...priameters};
   }
 
   start() {
-    // Varibles
-
-    /*
-     We're now gonna sepreate the series of arguments so instead of it 
-     being all one message it will be a split into mutltiple
-     */
-
-    const parsedmessage = this.message.content.trim()
-    const args = parsedmessage.split(/\s+/)
-    const MaliformedCryptedMessage = {
-      "Command": args[1],
-      "Server": args[2],
-      "Username": args[3],
-      "Length": args[4],
-      "PlaceId": args[5]
-    }
-
     /// Sending nofication
-    this.message.reply('Connection is being established, arugments have been provided : ' + JSON.stringify(MaliformedCryptedMessage))
+    this.message.reply('Connection is being established, arugments have been provided : ' + JSON.stringify(this.response))
 
     // Connecting to server on roblox
     /*
@@ -70,6 +48,6 @@ export class Connect {
       so we can then now remotely access a server session, but if we're not we'll connect
       to a new session
     */
-    return request(args[1], args[3], args[4], args[5])
+    return request(this.response)
   }
 }
