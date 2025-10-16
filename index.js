@@ -60,6 +60,36 @@ client.on(Events.InteractionCreate, async (interaction) => {
       session.start()
       break;
     }
+
+    case "unban": {
+       // @Varibles
+      const placeId = interaction.options.getString("placeid");
+      const userId = interaction.options.getString("userid");
+      const session = Connect.default ||new Connect("UnBan", placeId, userId);
+
+      // Waitting for bot response
+      await interaction.reply({
+        content: `UnBanning user ID: \`${userId}\` from place ID: \`${placeId}\``,
+        ephemeral: true,
+      });
+
+      session.start()
+      break;
+    }
+
+    case "getmessages": {
+      const placeId = interaction.options.getString("placeid");
+      const userId = interaction.options.getString("userid");
+
+      // Waitting for bot response
+      await interaction.reply({
+        content: `Getting user messages from userid: \`${userId}\` from place ID: \`${placeId}\``,
+        ephemeral: true,
+      });
+
+      session.start()
+      break;
+    }
   }
 });
 
