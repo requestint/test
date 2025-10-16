@@ -29,9 +29,9 @@ async function request(param) {
 }
 
 export class Connect {
-  constructor(priameters) {
-    console.log(priameters)
-    this.response = priameters;
+  constructor(...priameters) {
+    console.log(...priameters)
+    this.response = [...priameters];
   }
 
   start() {
