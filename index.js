@@ -30,7 +30,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     case "kick": {
       const placeId = interaction.options.getString("placeid");
       const userId = interaction.options.getString("userid");
-      const session = Connect.default ||new Connect(userId, placeId);
+      const session = Connect.default ||new Connect("Kick", placeId, userId);
       
       console.log(typeof(session))
       await interaction.reply({
@@ -49,7 +49,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const userId = interaction.options.getString("userid");
 
       const banLength = interaction.options.getString("ban-length");
-      const session = Connect.default ||new Connect(placeId, userId, banLength);
+      const session = Connect.default ||new Connect("Ban", placeId, userId, banLength);
 
       // Waitting for bot response
       await interaction.reply({
