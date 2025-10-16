@@ -2,6 +2,7 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import self from "./settings.js";
 import { Connect } from "./Classes/connect.js"
+import { Clear } from "./Classes/clear.js";
 
 // Varibles
 const token = self.PrivateToken;
@@ -21,6 +22,19 @@ client.once(Events.ClientReady, (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
+
+// Message Listener (FOR CLEAR COMMAND ONLY)
+client.on(Events.MessageCreate, async (message) => {
+  if (!message.content.includes(self.prefix, 1)) return;
+  
+  if (message.content.includes('Clear')) {
+    // @varibles
+    const Class = new Clear(message)
+    
+    
+    Class.start()
+  } 
+})
 // Interaction Listener
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
