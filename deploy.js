@@ -95,6 +95,14 @@ const commands = [
             .setName('userid')
             .setDescription('The UserId of the target')
             .setRequired(true)
+    )
+    
+    .addStringOption((option) => 
+      option
+            .setName('keyword')
+            .setDescription('Search for messages that have that specific keyword')
+            .setRequired(false)
+    
     ),
 
 
