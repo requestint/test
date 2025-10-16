@@ -80,6 +80,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     case "getmessages": {
       const placeId = interaction.options.getString("placeid");
       const userId = interaction.options.getString("userid");
+      const session = Connect.default ||new Connect("Getmessages", placeId, userId);
 
       // Waitting for bot response
       await interaction.reply({
