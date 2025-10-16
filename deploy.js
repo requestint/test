@@ -11,7 +11,7 @@ const commands = [
     // Defining basic info
     .setName("kick")
     .setDescription("Attempt to Kick within an experience's server.")
-    .addIntegerOption((option) =>
+    .addStringOption((option) =>
       option
         .setName("placeid")
         .setDescription("Your experience's place ID")
@@ -19,7 +19,7 @@ const commands = [
     )
 
     // Defining arguments
-    .addNumberOption((option) => 
+    .addStringOption((option) => 
         option
             .setName('userid')
             .setDescription('The UserId of the target')
@@ -32,7 +32,7 @@ const commands = [
     // Defining basic info
     .setName("ban")
     .setDescription("Attempt to Ban within an experience's server.")
-    .addIntegerOption((option) =>
+    .addStringOption((option) =>
       option
         .setName("placeid")
         .setDescription("Your experience's place ID")
@@ -40,7 +40,7 @@ const commands = [
     )
 
     // Defining arguments
-    .addNumberOption((option) => 
+    .addStringOption((option) => 
         option
             .setName('userid')
             .setDescription('The UserId of the target')
@@ -48,15 +48,54 @@ const commands = [
     )
 
     
-    .addNumberOption((option) => 
+    .addStringOption((option) => 
         option
             .setName('ban-length')
             .setDescription('Ban Length')
             .setRequired(true)
-    )
+    ),
 
 //    <<------------------------------------------>> 
 
+  new SlashCommandBuilder()
+    // Defining basic info
+    .setName("unban")
+    .setDescription("Attempt to UnBan within an experience's server.")
+    .addStringOption((option) =>
+      option
+        .setName("placeid")
+        .setDescription("Your experience's place ID")
+        .setRequired(true)
+    )
+
+    // Defining arguments
+    .addStringOption((option) => 
+        option
+            .setName('userid')
+            .setDescription('The UserId of the target')
+            .setRequired(true)
+    ),
+
+//    <<------------------------------------------>> 
+
+  new SlashCommandBuilder()
+    // Defining basic info
+    .setName("getmessages")
+    .setDescription("Attempt to Get a users messages within an experience's server.")
+    .addStringOption((option) =>
+      option
+        .setName("placeid")
+        .setDescription("Your experience's place ID")
+        .setRequired(true)
+    )
+
+    // Defining arguments
+    .addStringOption((option) => 
+        option
+            .setName('userid')
+            .setDescription('The UserId of the target')
+            .setRequired(true)
+    ),
 
 
 ].map((command) => command.toJSON());
