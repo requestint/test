@@ -1,7 +1,7 @@
 // Libraries
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import self from "./settings.js";
-import connect, { Connect } from "./Classes/connect.js"
+import { Connect } from "./Classes/connect.js"
 
 // Varibles
 const token = self.PrivateToken;
@@ -29,8 +29,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
     case "kick": {
       const placeId = interaction.options.getInteger("placeid");
       const userId = interaction.options.getNumber("userid");
-      const session = new Connect(placeId, userId)
-
+      const session = Connect.default ||new Connect(placeId, userId);
+      
+      console.log(typeof(session))
       await interaction.reply({
         content: `Kicking user ID: \`${userId}\` from place ID: \`${placeId}\`...`,
         ephemeral: true,
@@ -46,7 +47,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const userId = interaction.options.getNumber("userid");
 
       const banLength = interaction.options.getNumber("ban-length");
-      const session = new Connect(placeId, userId, banLength)
+      const session = Connect.default ||new Connect(placeId, userId, banLength);
 
       // Waitting for bot response
       await interaction.reply({
