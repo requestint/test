@@ -25,11 +25,12 @@ client.once(Events.ClientReady, (c) => {
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
+  // TODO SET VALUES TO STRINGS
   switch (interaction.commandName) {
     case "kick": {
-      const placeId = interaction.options.getInteger("placeid");
-      const userId = interaction.options.getNumber("userid");
-      const session = Connect.default ||new Connect(placeId, userId);
+      const placeId = interaction.options.getString("placeid");
+      const userId = interaction.options.getString("userid");
+      const session = Connect.default ||new Connect({userId, placeId});
       
       console.log(typeof(session))
       await interaction.reply({
@@ -37,17 +38,18 @@ client.on(Events.InteractionCreate, async (interaction) => {
         ephemeral: true,
       });
       
+
       session.start() 
       break;
     }
 
     case "ban": {
       // @Varibles
-      const placeId = interaction.options.getInteger("placeid");
-      const userId = interaction.options.getNumber("userid");
+      const placeId = interaction.options.getString("placeid");
+      const userId = interaction.options.getString("userid");
 
-      const banLength = interaction.options.getNumber("ban-length");
-      const session = Connect.default ||new Connect(placeId, userId, banLength);
+      const banLength = interaction.options.getString("ban-length");
+      const session = Connect.default ||new Connect({placeId, userId, banLength});
 
       // Waitting for bot response
       await interaction.reply({
