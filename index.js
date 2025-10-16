@@ -1,9 +1,10 @@
+// Libraries
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import self from "./settings.js";
 import connect, { Connect } from "./Classes/connect.js"
 
+// Varibles
 const token = self.PrivateToken;
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -12,10 +13,15 @@ const client = new Client({
   ],
 });
 
+
+// Functions
+
+// Waiting for the event client to be ready
 client.once(Events.ClientReady, (c) => {
   console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
+// Interaction Listener
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
