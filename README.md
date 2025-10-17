@@ -21,16 +21,3 @@
 
   2. Visual Console On the roblox end that'll provide live signals that relate to any actions done on the roblox side about the bot
   and more!
-
-    |            *                -------------
-    |            |    \       /   |          
-    |            |     \    /      -------------
-    |            |      \ /       |              
-    ----------                    -------------    
-
-   
-    -----      ------     -------
-          |  |        |      |
-    ------   |        |      |
-          |  |        |      |
-    -----      ------        |
