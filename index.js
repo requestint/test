@@ -31,15 +31,15 @@ client.on(Events.MessageCreate, async (message) => {
     // @varibles
     const Class = new Clear(message)
     
-    
+
     Class.start()
   } 
 })
 // Interaction Listener
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
+  if (!interaction.member.roles.cache.some(role => "RemoteGameAccess")) return;
 
-  // TODO SET VALUES TO STRINGS
   switch (interaction.commandName) {
     case "kick": {
       const placeId = interaction.options.getString("placeid");
