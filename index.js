@@ -38,8 +38,10 @@ client.on(Events.MessageCreate, async (message) => {
 // Interaction Listener
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
-  if (!interaction.member.roles.cache.some(role => "RemoteGameAccess")) return;
+  if (!interaction.member.roles.cache.some(role => role.name === "RemoteGameAccess")) return;
 
+  console.log(!interaction.member.roles.cache.some(role => role.name === "RemoteGameAccess"))
+  
   switch (interaction.commandName) {
     case "kick": {
       const placeId = interaction.options.getString("placeid");
