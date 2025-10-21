@@ -77,7 +77,7 @@ function Callback(botreq, repository : Instance)
 		--- Now we'll print the module aquired and return it
 		return module(...)
 		
-	end, {Datastore = DataStores, table = ChatMessages}, Tag , UserTargetid, botreq[1])
+	end, {Datastore = DataStores, table = ChatMessages}, Tag , UserTargetid, botreq)
 
 	-- now we'll check if we got a success
 	if not success then

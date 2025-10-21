@@ -5,7 +5,7 @@ local Players = game:GetService("Players")
 local MessagingService = game:GetService("MessagingService")
 local BanUserDatStore = DatastoreService:GetDataStore("BanUserDataStore");
 
-return function(UserDataStores, ResolvedTag, Userid, command)
+return function(UserDataStores, ResolvedTag, Userid, Botrequest)
 	local success, result = pcall(function()
 		
 		--- Searching for account
